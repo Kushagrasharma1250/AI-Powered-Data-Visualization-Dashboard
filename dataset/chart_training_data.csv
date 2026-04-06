@@ -1,0 +1,9 @@
+num_columns,num_categorical,num_datetime,chart
+1,1,0,Bar Chart
+2,0,0,Scatter Plot
+1,0,1,Line Chart
+1,0,0,Histogram
+0,1,0,Pie Chart
+2,1,0,Scatter Plot
+1,2,0,Bar Chart
+1,1,1,Line Chart

@@ -1,16 +1,41 @@
-def suggest_chart(x_type, y_type):
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+import joblib
 
-    if x_type == "Categorical" and y_type == "Numerical":
-        return "Bar Chart"
+def train_model():
 
-    elif x_type == "Numerical" and y_type == "Numerical":
-        return "Scatter Plot"
+    data = pd.read_csv(r"C:\Users\ssk12\OneDrive\Documents\GitHub\AI-Powered-Data-Visualization-Dashboard\dataset\chart_training_data.csv")
 
-    elif x_type == "Datetime" and y_type == "Numerical":
-        return "Line Chart"
+    X = data[
+        [
+            "num_columns",
+            "num_categorical",
+            "num_datetime"
+        ]
+    ]
 
-    elif x_type == "Numerical":
-        return "Histogram"
+    y = data["chart"]
 
-    else:
-        return "Pie Chart"
+    model = DecisionTreeClassifier()
+
+    model.fit(X, y)
+
+    joblib.dump(model, r"C:\Users\ssk12\OneDrive\Documents\GitHub\AI-Powered-Data-Visualization-Dashboard\dataset\chart_model.pkl")
+
+def predict_chart(
+    num_columns,
+    num_categorical,
+    num_datetime
+):
+
+    model = joblib.load(r"C:\Users\ssk12\OneDrive\Documents\GitHub\AI-Powered-Data-Visualization-Dashboard\dataset\chart_model.pkl")
+
+    prediction = model.predict(
+        [[
+            num_columns,
+            num_categorical,
+            num_datetime
+        ]]
+    )
+
+    return prediction[0]
