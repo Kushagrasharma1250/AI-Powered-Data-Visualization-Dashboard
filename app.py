@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-import joblib
 
 from utils import analyze_dataset
 from model import predict_chart

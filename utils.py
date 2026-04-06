@@ -1,12 +1,13 @@
 import pandas as pd
 def detect_column_type(series):
     if pd.api.types.is_numeric_dtype(series):
-        return 'numeric'
-    elif pd.api.types.is_string_dtype(series):
-        return 'categorical'
+        return 'Numerical'
     elif pd.api.types.is_datetime64_any_dtype(series):
-        return 'datetime'
-    else:        return 'other'
+        return 'Datetime'
+    elif pd.api.types.is_string_dtype(series) or pd.api.types.is_categorical_dtype(series):
+        return 'Categorical'
+    else:
+        return 'Other'
 
 def analyze_dataset(df):
     analysis = {}
