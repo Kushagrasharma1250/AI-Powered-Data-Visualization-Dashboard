@@ -136,7 +136,9 @@ if file:
     chart = predict_chart(
         num_columns,
         num_categorical,
-        num_datetime
+        num_datetime,
+        x_type,
+        y_type
     )
 
     st.write(

@@ -25,8 +25,28 @@ def _load_model():
 def predict_chart(
     num_columns,
     num_categorical,
-    num_datetime
+    num_datetime,
+    x_type=None,
+    y_type=None
 ):
+    if x_type and y_type:
+        if x_type == "Numerical" and y_type == "Numerical":
+            return "Scatter Plot"
+        if x_type == "Datetime" and y_type == "Numerical":
+            return "Line Chart"
+        if x_type == "Numerical" and y_type == "Datetime":
+            return "Line Chart"
+        if x_type == "Categorical" and y_type == "Numerical":
+            return "Bar Chart"
+        if x_type == "Numerical" and y_type == "Categorical":
+            return "Bar Chart"
+        if x_type == "Categorical" and y_type == "Categorical":
+            return "Pie Chart"
+        if x_type == "Datetime" and y_type == "Categorical":
+            return "Bar Chart"
+        if x_type == "Categorical" and y_type == "Datetime":
+            return "Bar Chart"
+
     try:
         model = _load_model()
     except FileNotFoundError:
