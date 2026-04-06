@@ -4,7 +4,7 @@ import joblib
 
 def train_model():
 
-    data = pd.read_csv(r"C:\Users\ssk12\OneDrive\Documents\GitHub\AI-Powered-Data-Visualization-Dashboard\dataset\chart_training_data.csv")
+    data = pd.read_csv("chart_training_data.csv")
 
     X = data[
         [
@@ -20,7 +20,7 @@ def train_model():
 
     model.fit(X, y)
 
-    joblib.dump(model, r"C:\Users\ssk12\OneDrive\Documents\GitHub\AI-Powered-Data-Visualization-Dashboard\dataset\chart_model.pkl")
+    joblib.dump(model, "chart_model.pkl")
 
 def predict_chart(
     num_columns,
@@ -28,7 +28,7 @@ def predict_chart(
     num_datetime
 ):
 
-    model = joblib.load(r"C:\Users\ssk12\OneDrive\Documents\GitHub\AI-Powered-Data-Visualization-Dashboard\dataset\chart_model.pkl")
+    model = joblib.load("chart_model.pkl")
 
     prediction = model.predict(
         [[
